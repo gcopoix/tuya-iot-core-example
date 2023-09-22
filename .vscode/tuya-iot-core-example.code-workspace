@@ -1,0 +1,77 @@
+{
+	// https://code.visualstudio.com/docs/editor/workspaces
+	// https://code.visualstudio.com/docs/editor/multi-root-workspaces
+	// https://code.visualstudio.com/docs/editor/variables-reference
+
+	"folders": [
+		{
+			"path": ".."
+		},
+	],
+	// extensions.json section
+	"extensions": {
+		"recommendations": [
+			"ms-vscode.cpptools",     // common C/C++ language support
+			"ms-vscode.cmake-tools",  // cmake support
+			"mhutchie.git-graph",     // git support
+		],
+		"unwantedRecommendations": [
+		]
+	},
+	// settings.json section
+	"settings": {
+		"files.trimTrailingWhitespace": true,
+		"files.insertFinalNewline": true,
+		"files.trimFinalNewlines": true,
+		"files.eol": "\n",
+		"editor.tabSize": 4,
+		"editor.insertSpaces": false,
+		"C_Cpp.default.cStandard": "c99",
+		"cmake.configureOnOpen": true,
+		"cmake.configureOnEdit": true,
+		"cmake.automaticReconfigure": true,
+		"cmake.configureArgs": [],
+		"cmake.buildDirectory": "${workspaceFolder}/build",
+		"cmake.buildToolArgs": [],
+		"cmake.generator": "Unix Makefiles",
+		//"cmake.generator": "Ninja",
+		"cmake.configureSettings": {
+			"CMAKE_BUILD_TYPE": "${buildType}", // set by cmake: Select Variant"
+			"CMAKE_TOOLCHAIN_FILE": "${workspaceFolder}/cmake/gcc-arm-none-eabi.cmake",
+		},
+	},
+	// tasks.json section
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"type": "cmake",
+				"label": "Build target",
+				"command": "build",
+				"targets": [ "all" ],
+				"group": {
+					"kind": "build",
+					"isDefault": true
+				},
+				"problemMatcher": [ "$gcc" ],
+				"detail": "Build targets with cmake"
+			},
+		],
+	},
+	// launch.json section
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Debug tuya-iot-core sample with gdb",
+				"type": "cppdbg",
+				"request": "launch",
+				"program": "${command:cmake.buildDirectory}/x64/tuya_demo",
+				"args": [],
+				"cwd": "${command:cmake.buildDirectory}/x64/bin",
+				"preLaunchTask": "Build target",
+				"stopAtEntry": true,
+			},
+		],
+	},
+}

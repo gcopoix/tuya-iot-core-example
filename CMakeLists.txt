@@ -44,7 +44,7 @@ add_executable( tuya_demo
     src/data_model_basic_demo.c
 )
 
-# Tuya SDK provides a platform_port for posix only - add/link sample dummy implementation if cross built
+# Tuya SDK provides a platform_port for posix only - add sample dummy implementation if cross built
 if( ${CMAKE_CROSSCOMPILING} )
     target_sources( tuya_demo
         PUBLIC src/platform/dummy/system_wrapper.c

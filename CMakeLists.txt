@@ -37,6 +37,9 @@ endif()
 # add Tuya IoT Core SDK
 add_subdirectory( tuya-iot-core-sdk )
 
+# force target executables to build/<arch>/bin folder
+set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin )
+
 # my project as executable
 # (we can simply use / start from a copy of a Tuya SDK example source file we copy to our local project
 #  e.g. tuya-iot-core-sdk/examples/data_model_basic_demo/data_model_basic_demo.c)

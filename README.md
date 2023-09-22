@@ -8,7 +8,7 @@ The [wrapped Tuya IoT Core SDK](https://github.com/gcopoix/tuya-iot-core-sdk) is
   A [sample toolchain file](cmake/gcc-arm-none-eabi.cmake) has been added as example.
 
 
-# Development environment
+## Development environment
 This project offers a [workspace file](.vscode/tuya-iot-core-example.code-workspace) for [Visual Studio Code](https://code.visualstudio.com) with pre-configured
 
 - plugin recommendations
@@ -20,7 +20,28 @@ This project offers a [workspace file](.vscode/tuya-iot-core-example.code-worksp
 The cmake is configured with a [sample toolchain file](cmake/gcc-arm-none-eabi.cmake), so always the x64 and arm targets are build. \
 If you want to disable the additional cross build, simply remove or disable the ["CMAKE_TOOLCHAIN_FILE" parameter](.vscode/tuya-iot-core-example.code-workspace#L40)
 
-# ToDo for own project
+## Getting started
+1. get project and necessary submodules
+	```
+	# get project and necessary submodules
+	git clone --recurse-submodules https://github.com/gcopoix/tuya-iot-core-example.git
+	```
+2. The console way:
+	```
+	# launch VisualStudio Code with project workspace
+	cd tuya-iot-core-example
+	code .vscode/tuya-iot-core-example.code-workspace
+	```
+2. The GUI way: \
+   Open VidualStudio Code, from menu select
+   - File -> "Open Workspace from File"
+   - select `.vscode/tuya-iot-core-example.code-workspace` of the cloned repository above
+
+VisualStudio Code automatically configures the project (cmake settings are [defined](.vscode/tuya-iot-core-example.code-workspace#L30-L41) in the workspace file). \
+Press `F5` to build and launch Debugger.
+
+
+## ToDo for own project
 - follow the [steps](https://developer.tuya.com/en/docs/iot/link-sdk?id=Kaiuyfihfgkr5#title-3-Step%202%3A%20Configure%20device%20information) to create an own Tuya account and get your own set of credentials \
   (skip Step 1 as the SDK is already part of this sample)
 - port to embedded target and implement [platform_port](src/platform) for a real target

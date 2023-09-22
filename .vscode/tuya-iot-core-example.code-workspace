@@ -66,7 +66,7 @@
 				"name": "Debug tuya-iot-core sample with gdb",
 				"type": "cppdbg",
 				"request": "launch",
-				"program": "${command:cmake.buildDirectory}/x64/tuya_demo",
+				"program": "${command:cmake.buildDirectory}/x64/bin/tuya_demo",
 				"args": [],
 				"cwd": "${command:cmake.buildDirectory}/x64/bin",
 				"preLaunchTask": "Build target",
